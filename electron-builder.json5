@@ -1,0 +1,67 @@
+/**
+ * @see https://www.electron.build/configuration/configuration
+ */
+{
+  "appId": "this.is.tasky",
+  "asar": true,
+  "artifactName": "${productName}_${version}_${os}_${arch}.${ext}",
+  "directories": {
+    // 输出目录
+    "output": "dist/${version}"
+  },
+  "files": [
+    "build-electron",
+    "build"
+  ],
+  "mac": {
+    hardenedRuntime: true,
+    gatekeeperAssess: false,
+    entitlements: 'public/entitlements.mac.plist',
+    entitlementsInherit: 'public/entitlements.mac.plist',
+    icon: 'public/icons/logo.icns',
+  },
+  "win": {
+    "target": [
+      {
+        "target": "nsis",
+        "arch": [
+          "x64"
+        ]
+      }
+    ],
+    "artifactName": "${productName}_${version}.${ext}"
+  },
+  dmg: {
+    sign: false,
+    icon: 'public/icons/logo.icns',
+    iconSize: 128,
+    contents: [
+      {
+        x: 380,
+        y: 180,
+        type: 'link',
+        path: '/Applications',
+      },
+      {
+        x: 130,
+        y: 180,
+        type: 'file',
+      },
+    ],
+    window: {
+      width: 540,
+      height: 380,
+    },
+  },
+  "nsis": {
+    "oneClick": false,
+    "perMachine": false,
+    "allowToChangeInstallationDirectory": true,
+    "deleteAppDataOnUninstall": false
+  },
+  "publish": {
+    "provider": "generic",
+    "channel": "latest",
+    "url": "https://github.com/electron-vite/electron-vite-react/releases/download/v0.9.9/"
+  }
+}
