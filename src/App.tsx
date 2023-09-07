@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
-
-const FunIndex = lazy(() => import("./pages/index"));
+import  FunIndex from "./pages/index"
 const RecorderAudio = lazy(() => import("./pages/recorderAudio"));
 const RecorderScreen = lazy(() => import("./pages/recorderScreen"));
 const RecorderVideo = lazy(() => import("./pages/recorderVideo"));
